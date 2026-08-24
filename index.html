@@ -13,15 +13,9 @@
   <meta property="og:type" content="website" />
   <meta name="twitter:card" content="summary_large_image" />
 
-  <!-- Enlace correcto para mostrar tu logo en la pestaña del navegador -->
-<link rel="icon" type="image/png" href="./image.png" />
+  <link rel="icon" type="image/png" href="./image.png" />
 
-  <!--<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='45' fill='%23f6c14f'/%3E%3Ctext x='50' y='70' font-size='50' text-anchor='middle' fill='%23101010' font-weight='bold'%3EC%3C/text%3E%3C/svg%3E" /> -->
-
-  <!-- Google Fonts + tipografías expresivas -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800&family=Space+Grotesk:wght@400;500;600&family=Playfair+Display:ital,wght@0,500;0,700;1,500&display=swap" rel="stylesheet" />
-  
-  <!-- Font Awesome 6 (iconos actualizados) -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
 
   <style>
@@ -29,57 +23,12 @@
       margin: 0;
       padding: 0;
       box-sizing: border-box;
-      user-select: none; /* estético, no interfiere con links */
     }
 
-    /* Contenedor relativo modificado para abarcar el 100% */
-    .dropdown-whatsapp {
-      position: relative;
-      display: block;
-      width: 100%;
-    }
-
-    /* Estilos para el botón disparador adaptados a .btn-modern */
-    .btn-trigger {
-      border: none;
-      cursor: pointer;
-      width: 100%;
-      background-color: rgba(20, 20, 28, 0.8);
-      color: white;
-      font-family: inherit;
-    }
-
-    /* Ocultar el menú de manera predeterminada y darle transición */
-    .dropdown-content {
-      display: block;
-      position: absolute;
-      bottom: 105%; /* Hace que se despliegue hacia ARRIBA. */
-      left: 0;
-      width: 100%;
-      opacity: 0;
-      pointer-events: none;
-      transform: translateY(10px);
-      transition: all 0.3s ease;
-      z-index: 999;
-    }
-
-    /* Estilo para los botones internos del menú */
-    .dropdown-content .item-wp {
-      margin-bottom: 8px; /* Separación entre los dos números */
-      box-shadow: 0px 4px 12px rgba(0,0,0,0.15);
-    }
-
-    /* ACCIÓN: Mostrar al pasar el mouse (Hover) */
-    .dropdown-whatsapp:hover .dropdown-content {
-      opacity: 1;
-      pointer-events: auto;
-      transform: translateY(0);
-    }
-
-    /* Rotación sutil del icono de flecha al abrir */
-    .dropdown-whatsapp:hover .arrow-icon i {
-      transform: rotate(180deg);
-      transition: transform 0.3s ease;
+    :focus-visible {
+      outline: 2px solid #f6c14f;
+      outline-offset: 3px;
+      border-radius: 8px;
     }
 
     body {
@@ -97,43 +46,35 @@
     /* ========= FONDO DINÁMICO + ONDAS SONORAS ========= */
     .bg-artistic {
       position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
       z-index: -1;
       overflow: hidden;
     }
 
     .gradient-orb {
       position: absolute;
-      width: 80vmax;
-      height: 80vmax;
+      width: 80vmax; height: 80vmax;
       border-radius: 50%;
       background: radial-gradient(circle at 30% 40%, rgba(246,193,79,0.12), rgba(20,20,30,0));
-      top: -30%;
-      left: -20%;
+      top: -30%; left: -20%;
       filter: blur(90px);
       animation: floatOrb 22s infinite alternate ease-in-out;
     }
 
     .gradient-orb-two {
       position: absolute;
-      width: 70vmax;
-      height: 70vmax;
+      width: 70vmax; height: 70vmax;
       background: radial-gradient(circle at 70% 60%, rgba(255,80,100,0.08), rgba(0,0,0,0));
-      bottom: -20%;
-      right: -20%;
+      bottom: -20%; right: -20%;
       filter: blur(100px);
       animation: floatOrbTwo 18s infinite alternate;
     }
 
     canvas#soundCanvas {
       position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      height: 160px;
+      bottom: 0; left: 0;
+      width: 100%; height: 160px;
       opacity: 0.28;
       pointer-events: none;
       z-index: 1;
@@ -143,13 +84,12 @@
       0% { transform: translate(0, 0) scale(1); opacity: 0.5; }
       100% { transform: translate(5%, 8%) scale(1.2); opacity: 0.9; }
     }
-
     @keyframes floatOrbTwo {
       0% { transform: translate(0, 0) scale(1); opacity: 0.3; }
       100% { transform: translate(-6%, -10%) scale(1.3); opacity: 0.8; }
     }
 
-    /* ========= TARJETA PRINCIPAL (GLASS + BORDES VIVOS) ========= */
+    /* ========= TARJETA PRINCIPAL ========= */
     .card {
       max-width: 510px;
       width: 100%;
@@ -159,42 +99,22 @@
       border: 1px solid rgba(246, 193, 79, 0.3);
       box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(246, 193, 79, 0.1) inset, 0 8px 32px rgba(0,0,0,0.4);
       transition: transform 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1), box-shadow 0.4s;
-      animation: cardFloat 1s ease-out;
+      animation: cardFloat 0.9s ease-out;
       position: relative;
       z-index: 10;
     }
 
     .card:hover {
-      transform: translateY(-6px);
       box-shadow: 0 40px 70px rgba(0, 0, 0, 0.7), 0 0 0 1px rgba(246, 193, 79, 0.5) inset;
       border-color: rgba(246, 193, 79, 0.6);
     }
 
     @keyframes cardFloat {
-      0% {
-        opacity: 0;
-        transform: translateY(50px) scale(0.96);
-      }
-      100% {
-        opacity: 1;
-        transform: translateY(0) scale(1);
-      }
+      0% { opacity: 0; transform: translateY(50px) scale(0.96); }
+      100% { opacity: 1; transform: translateY(0) scale(1); }
     }
 
-    /* DECORACIÓN ARTÍSTICA (líneas rítmicas) */
-    .rhythm-lines {
-      position: absolute;
-      top: 20px;
-      left: 30px;
-      right: 30px;
-      height: 3px;
-      background: repeating-linear-gradient(90deg, #f6c14f, #f6c14f 12px, transparent 12px, transparent 24px);
-      opacity: 0.5;
-      border-radius: 10px;
-      pointer-events: none;
-    }
-
-    /* ========= HEADER: LOGO + TÍTULO DINÁMICO ========= */
+    /* ========= HEADER ========= */
     .hero {
       text-align: center;
       padding: 36px 28px 20px;
@@ -204,7 +124,7 @@
     .logo-wrapper {
       position: relative;
       display: inline-block;
-      margin-bottom: 20px;
+      margin-bottom: 16px;
     }
 
     .logo-ring {
@@ -218,14 +138,10 @@
       animation: spinGlow 8s linear infinite;
     }
 
-    @keyframes spinGlow {
-      0% { transform: rotate(0deg); }
-      100% { transform: rotate(360deg); }
-    }
+    @keyframes spinGlow { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
 
     .logo {
-      width: 150px;
-      height: 150px;
+      width: 150px; height: 150px;
       object-fit: cover;
       border-radius: 50%;
       background: #101010;
@@ -235,10 +151,7 @@
       transition: all 0.3s;
     }
 
-    .logo:hover {
-      transform: scale(1.02);
-      filter: brightness(1.05);
-    }
+    .logo:hover { transform: scale(1.02); filter: brightness(1.05); }
 
     h1 {
       font-family: 'Playfair Display', serif;
@@ -249,8 +162,7 @@
       background-clip: text;
       -webkit-background-clip: text;
       color: transparent;
-      text-shadow: 0 2px 5px rgba(0,0,0,0.2);
-      margin: 16px 0 6px;
+      margin: 12px 0 6px;
     }
 
     .subtitle {
@@ -263,14 +175,13 @@
       display: inline-block;
       padding: 5px 15px;
       border-radius: 60px;
-      backdrop-filter: blur(2px);
       margin-bottom: 12px;
     }
 
     .genre-badge {
       display: flex;
       justify-content: center;
-      gap: 12px;
+      gap: 10px;
       margin-top: 12px;
       flex-wrap: wrap;
     }
@@ -283,7 +194,6 @@
       font-size: 0.7rem;
       font-weight: 600;
       color: #fceabb;
-      backdrop-filter: blur(4px);
       transition: 0.2s;
     }
 
@@ -307,48 +217,49 @@
       letter-spacing: 0.2px;
     }
 
-    .quote-icon {
-      color: #f6c14f;
-      margin-right: 6px;
-      opacity: 0.7;
-    }
+    .quote-icon { color: #f6c14f; margin-right: 6px; opacity: 0.7; }
 
-    /* ======= BOTONES DINÁMICOS CON EFECTO MUSICAL ======= */
-    .contact-grid {
-      padding: 8px 24px 30px;
-    }
+    /* ======= BOTONES ======= */
+    .contact-grid { padding: 8px 24px 30px; }
 
     .btn-modern {
       display: flex;
       align-items: center;
       justify-content: space-between;
+      width: 100%;
       background: rgba(20, 20, 28, 0.8);
-      backdrop-filter: blur(8px);
       border: 1px solid rgba(255, 215, 120, 0.2);
       border-radius: 60px;
       padding: 12px 20px;
-      margin-bottom: 16px;
+      margin-bottom: 14px;
       text-decoration: none;
-      transition: all 0.35s cubic-bezier(0.2, 0.9, 0.6, 1.2);
+      cursor: pointer;
+      font-family: inherit;
+      transition: all 0.3s cubic-bezier(0.2, 0.9, 0.6, 1.2);
       position: relative;
       overflow: hidden;
+      opacity: 0;
+      transform: translateY(14px);
+      animation: btnRise 0.55s ease forwards;
     }
+
+    .contact-grid .btn-modern:nth-of-type(1) { animation-delay: 0.05s; }
+    .contact-grid .btn-modern:nth-of-type(2) { animation-delay: 0.12s; }
+    .contact-grid .btn-modern:nth-of-type(3) { animation-delay: 0.19s; }
+    .contact-grid .btn-modern:nth-of-type(4) { animation-delay: 0.26s; }
+
+    @keyframes btnRise { to { opacity: 1; transform: translateY(0); } }
 
     .btn-modern::before {
       content: '';
       position: absolute;
-      top: 0;
-      left: -100%;
-      width: 100%;
-      height: 100%;
+      top: 0; left: -100%;
+      width: 100%; height: 100%;
       background: linear-gradient(90deg, transparent, rgba(246,193,79,0.2), transparent);
       transition: left 0.6s;
       pointer-events: none;
     }
-
-    .btn-modern:hover::before {
-      left: 100%;
-    }
+    .btn-modern:hover::before { left: 100%; }
 
     .btn-modern:hover {
       transform: translateX(6px) scale(1.01);
@@ -358,8 +269,8 @@
     }
 
     .btn-icon {
-      width: 52px;
-      height: 52px;
+      flex-shrink: 0;
+      width: 52px; height: 52px;
       background: radial-gradient(circle at 30% 20%, #2a2a2e, #111);
       border-radius: 40px;
       display: flex;
@@ -368,86 +279,80 @@
       font-size: 1.7rem;
       transition: 0.2s;
     }
-
-    .btn-modern:hover .btn-icon {
-      transform: scale(1.05);
-    }
+    .btn-modern:hover .btn-icon { transform: scale(1.05); }
 
     .wp-icon { color: #25D366; text-shadow: 0 0 5px #25D36640; }
     .ig-icon { color: #E4405F; text-shadow: 0 0 4px #E4405F50; }
     .fb-icon { color: #1877F2; }
     .music-icon { color: #f6c14f; }
 
-    .btn-text {
-      flex: 1;
-      margin-left: 18px;
-      font-weight: 600;
-      text-align: left; /* Alinea los textos a la izquierda dentro del botón */
-    }
-    .btn-text strong {
-      display: block;
-      font-size: 1rem;
-      color: white;
-      letter-spacing: -0.2px;
-    }
-    .btn-text small {
-      font-size: 0.72rem;
-      color: #CCCCCC;
-      font-weight: 400;
-    }
+    .btn-text { flex: 1; margin-left: 18px; font-weight: 600; text-align: left; min-width: 0; }
+    .btn-text strong { display: block; font-size: 1rem; color: white; letter-spacing: -0.2px; }
+    .btn-text small { font-size: 0.72rem; color: #CCCCCC; font-weight: 400; }
 
-    .arrow-icon {
-      color: #f6c14f;
-      opacity: 0.7;
-      font-size: 0.9rem;
-      transition: 0.2s;
-    }
+    .arrow-icon { color: #f6c14f; opacity: 0.7; font-size: 0.9rem; transition: 0.2s; flex-shrink: 0; }
+    .btn-modern:hover .arrow-icon { transform: translateX(5px); opacity: 1; }
 
-    .btn-modern:hover .arrow-icon {
-      transform: translateX(5px);
-      opacity: 1;
-    }
-
-    /* Botón dorado destacado */
     .btn-highlight {
       background: linear-gradient(115deg, #2f2416, #1e1a10);
       border: 1px solid #f6c14f;
       box-shadow: 0 2px 10px rgba(246,193,79,0.2);
     }
-    .btn-highlight .btn-text strong {
-      color: #f6c14f;
-    }
-    .btn-highlight .btn-icon {
-      background: #f6c14f20;
-      backdrop-filter: blur(4px);
+    .btn-highlight .btn-text strong { color: #f6c14f; }
+    .btn-highlight .btn-icon { background: #f6c14f20; }
+
+    /* ======= DROPDOWN WHATSAPP (click-based, funciona en móvil y escritorio) ======= */
+    .dropdown-whatsapp { position: relative; display: block; width: 100%; margin-bottom: 14px; }
+    .dropdown-whatsapp .btn-modern { margin-bottom: 0; }
+
+    .btn-trigger { border: none; }
+
+    .dropdown-content {
+      display: grid;
+      grid-template-rows: 0fr;
+      overflow: hidden;
+      opacity: 0;
+      transition: grid-template-rows 0.35s ease, opacity 0.3s ease, margin-top 0.35s ease;
+      margin-top: 0;
     }
 
-    /* ========= REDES SOCIALES EXTRA (vibra community) ========= */
-    .social-mini {
-      display: flex;
-      justify-content: center;
-      gap: 22px;
+    .dropdown-content-inner { min-height: 0; overflow: hidden; }
+
+    .dropdown-whatsapp.open .dropdown-content {
+      grid-template-rows: 1fr;
+      opacity: 1;
       margin-top: 10px;
-      margin-bottom: 12px;
     }
+
+    .dropdown-content .item-wp {
+      margin-bottom: 8px;
+      margin-left: 12px;
+      width: calc(100% - 12px);
+      box-shadow: 0px 4px 12px rgba(0,0,0,0.15);
+      opacity: 1;
+      transform: none;
+      animation: none;
+    }
+    .dropdown-content .item-wp:last-child { margin-bottom: 4px; }
+
+    .dropdown-whatsapp.open .arrow-icon i,
+    .dropdown-whatsapp .btn-trigger[aria-expanded="true"] .arrow-icon i {
+      transform: rotate(180deg);
+    }
+    .arrow-icon i { display: inline-block; transition: transform 0.3s ease; }
+
+    /* ========= REDES SOCIALES EXTRA ========= */
+    .social-mini { display: flex; justify-content: center; gap: 22px; margin-top: 10px; margin-bottom: 12px; }
     .social-mini a {
       color: #aaa;
       font-size: 1.35rem;
       transition: all 0.25s;
       background: rgba(255,255,240,0.03);
-      width: 40px;
-      height: 40px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      width: 40px; height: 40px;
+      display: flex; align-items: center; justify-content: center;
       border-radius: 30px;
-      backdrop-filter: blur(4px);
     }
-    .social-mini a:hover {
-      color: #f6c14f;
-      transform: translateY(-4px);
-      background: rgba(246,193,79,0.1);
-    }
+    .social-mini a:hover { color: #f6c14f; transform: translateY(-4px); background: rgba(246,193,79,0.1); }
 
     footer {
       text-align: center;
@@ -459,13 +364,34 @@
       letter-spacing: 0.5px;
     }
 
-    /* animación sutil de pulsación en elementos interactivos */
-    @keyframes gentlePulse {
-      0% { text-shadow: 0 0 0px #f6c14f; }
-      100% { text-shadow: 0 0 6px #f6c14f70; }
+    /* ======= TOAST de confirmación ======= */
+    .toast {
+      position: fixed;
+      bottom: 24px;
+      left: 50%;
+      transform: translateX(-50%) translateY(20px);
+      background: #18181c;
+      border: 1px solid #f6c14f;
+      color: #fceabb;
+      padding: 12px 22px;
+      border-radius: 50px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      opacity: 0;
+      pointer-events: none;
+      transition: all 0.35s ease;
+      z-index: 2000;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+
+    @media (prefers-reduced-motion: reduce) {
+      * { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
     }
 
-    /* responsive */
     @media (max-width: 520px) {
       .card { border-radius: 48px; }
       h1 { font-size: 2rem; }
@@ -486,16 +412,14 @@
 </div>
 
 <div class="card">
-  <!-- <div class="rhythm-lines"></div> -->
 
-  <!-- Cabecera artística -->
   <div class="hero">
     <div class="logo-wrapper">
       <div class="logo-ring"></div>
       <img src="./image.png" alt="Logo Candija" class="logo" />
     </div>
-    <br>
     <div class="subtitle">AGRUPACIÓN MUSICAL</div>
+    <h1>CANDIJA</h1>
     <div class="genre-badge">
       <span>🎶 Son Cubano</span>
       <span>💃 Salsa</span>
@@ -503,66 +427,61 @@
     </div>
   </div>
 
-  <!-- Cita con estilo -->
   <div class="quote-section">
     <p class="phrase">
-      <i class="fa-solid fa-musical-note quote-icon"></i> 
-      “Donde el ritmo ancestral encuentra el alma moderna,<br> cada evento se vuelve memorable.”
-      <i class="fa-solid fa-drumstick-bite quote-icon" style="opacity:0.6;"></i>
+      <i class="fa-solid fa-music quote-icon"></i>
+      "Donde el ritmo ancestral encuentra el alma moderna,<br> cada evento se vuelve memorable."
     </p>
   </div>
 
-  <!-- Botones mejorados modernos -->
   <div class="contact-grid">
-    
-    <!-- Contenedor del Menú Desplegable de WhatsApp -->
-    <div class="dropdown-whatsapp">
-      <!-- Botón Principal Disparador -->
-      <button class="btn-modern btn-trigger">
+
+    <!-- Menú desplegable de WhatsApp: ahora funciona con clic (móvil y escritorio) -->
+    <div class="dropdown-whatsapp" id="wpDropdown">
+      <button class="btn-modern btn-trigger" id="wpTriggerBtn" aria-expanded="false" aria-controls="wpDropdownContent">
         <div class="btn-icon wp-icon"><i class="fa-brands fa-whatsapp"></i></div>
         <div class="btn-text">
           <strong>Contrataciones WhatsApp</strong>
-          <small>Haz clic para ver opciones</small>
+          <small>Toca para ver opciones</small>
         </div>
         <div class="arrow-icon"><i class="fa-solid fa-chevron-up"></i></div>
       </button>
 
-      <!-- Contenido Desplegable (Los dos números) -->
-      <div class="dropdown-content">
-        <!-- Número 1: Andres -->
-        <a href="https://wa.me/573165719057" target="_blank" class="btn-modern item-wp">
-          <div class="btn-icon wp-icon"><i class="fa-brands fa-whatsapp"></i></div>
-          <div class="btn-text">
-            <strong>Andres Abaut</strong>
-            <small>Director Comercial</small>
-          </div>
-          <div class="arrow-icon"><i class="fa-solid fa-arrow-right-long"></i></div>
-        </a>
+      <div class="dropdown-content" id="wpDropdownContent">
+        <div class="dropdown-content-inner">
+          <a href="https://wa.me/573165719057?text=Hola%20Andr%C3%A9s%2C%20vengo%20de%20la%20tarjeta%20digital%20de%20CANDIJA%20%F0%9F%8E%B6%20Quisiera%20informaci%C3%B3n%20sobre%20contrataciones."
+             target="_blank" rel="noopener" class="btn-modern item-wp">
+            <div class="btn-icon wp-icon"><i class="fa-brands fa-whatsapp"></i></div>
+            <div class="btn-text">
+              <strong>Andres Abaut</strong>
+              <small>Director Comercial</small>
+            </div>
+            <div class="arrow-icon"><i class="fa-solid fa-arrow-right-long"></i></div>
+          </a>
 
-        <!-- Número 2: Segundo Contacto -->
-        <a href="https://wa.me/573205098581" target="_blank" class="btn-modern item-wp">
-          <div class="btn-icon wp-icon"><i class="fa-brands fa-whatsapp"></i></div>
-          <div class="btn-text">
-            <strong>Leo Vega</strong>
-            <small>Atención al Cliente</small>
-          </div>
-          <div class="arrow-icon"><i class="fa-solid fa-arrow-right-long"></i></div>
-        </a>
+          <a href="https://wa.me/573205098581?text=Hola%20Leo%2C%20vengo%20de%20la%20tarjeta%20digital%20de%20CANDIJA%20%F0%9F%8E%B6%20Tengo%20una%20consulta%20sobre%20un%20evento."
+             target="_blank" rel="noopener" class="btn-modern item-wp">
+            <div class="btn-icon wp-icon"><i class="fa-brands fa-whatsapp"></i></div>
+            <div class="btn-text">
+              <strong>Leo Vega</strong>
+              <small>Atención al Cliente</small>
+            </div>
+            <div class="arrow-icon"><i class="fa-solid fa-arrow-right-long"></i></div>
+          </a>
+        </div>
       </div>
     </div>
-    
-    <!-- Instagram con handle dinámico -->
-    <a href="https://instagram.com/candijaoficial " target="_blank" class="btn-modern">
+
+    <a href="https://instagram.com/candijaoficial" target="_blank" rel="noopener" class="btn-modern">
       <div class="btn-icon ig-icon"><i class="fa-brands fa-instagram"></i></div>
       <div class="btn-text">
-        <strong>Instagram Candija Oficial </strong>
+        <strong>Instagram Candija Oficial</strong>
         <small>Reels, shows y backstage · Síguenos</small>
       </div>
       <div class="arrow-icon"><i class="fa-solid fa-arrow-right-long"></i></div>
     </a>
-    
-    <!-- Facebook -->
-    <a href="https://facebook.com/candija" target="_blank" class="btn-modern">
+
+    <a href="https://facebook.com/candija" target="_blank" rel="noopener" class="btn-modern">
       <div class="btn-icon fb-icon"><i class="fa-brands fa-facebook-f"></i></div>
       <div class="btn-text">
         <strong>Facebook oficial</strong>
@@ -570,8 +489,7 @@
       </div>
       <div class="arrow-icon"><i class="fa-solid fa-arrow-right-long"></i></div>
     </a>
-    
-    <!-- Formato musical / booking creativo (hover dinámico) -->
+
     <a href="#" id="showFormatBtn" class="btn-modern btn-highlight">
       <div class="btn-icon music-icon"><i class="fa-solid fa-record-vinyl"></i></div>
       <div class="btn-text">
@@ -582,11 +500,10 @@
     </a>
   </div>
 
-  <!-- Micro redes + correo (toque artístico) -->
   <div class="social-mini">
-    <a href="https://www.youtube.com/watch?v=K773I8Efgz4&list=RDK773I8Efgz4&start_radio=1" target="_blank" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
-    <a href="candijaoficial@gmail.com" aria-label="Email"><i class="fa-regular fa-envelope"></i></a>
-    <a href="https://tiktok.com/@candija" target="_blank" aria-label="TikTok"><i class="fa-brands fa-tiktok"></i></a>
+    <a href="https://www.youtube.com/watch?v=K773I8Efgz4&list=RDK773I8Efgz4&start_radio=1" target="_blank" rel="noopener" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+    <a href="mailto:candijaoficial@gmail.com?subject=Consulta%20de%20booking%20CANDIJA&body=Hola%20CANDIJA%2C%20quisiera%20informaci%C3%B3n%20sobre..." aria-label="Correo"><i class="fa-regular fa-envelope"></i></a>
+    <a href="https://tiktok.com/@candija" target="_blank" rel="noopener" aria-label="TikTok"><i class="fa-brands fa-tiktok"></i></a>
   </div>
 
   <footer>
@@ -595,94 +512,117 @@
   </footer>
 </div>
 
+<div class="toast" id="toast"><i class="fa-brands fa-whatsapp"></i><span id="toastText"></span></div>
+
 <script>
   (function() {
-    // === CANVAS: ONDAS SONORAS ARTÍSTICAS ===
+    // === CANVAS: ONDAS SONORAS ===
     const canvas = document.getElementById('soundCanvas');
-    if (!canvas) return;
-    const ctx = canvas.getContext('2d');
-    let width, height;
-    
-    function resizeCanvas() {
-      width = window.innerWidth;
-      height = 160;
-      canvas.width = width;
-      canvas.height = height;
-    }
-    window.addEventListener('resize', resizeCanvas);
-    resizeCanvas();
+    if (canvas) {
+      const ctx = canvas.getContext('2d');
+      let width, height;
+      function resizeCanvas() { width = window.innerWidth; height = 160; canvas.width = width; canvas.height = height; }
+      window.addEventListener('resize', resizeCanvas);
+      resizeCanvas();
 
-    let time = 0;
-    function drawSoundWave() {
-      if (!ctx) return;
-      ctx.clearRect(0, 0, width, height);
-      const gradient = ctx.createLinearGradient(0, 0, width, 0);
-      gradient.addColorStop(0, '#f6c14f20');
-      gradient.addColorStop(0.5, '#f6c14f60');
-      gradient.addColorStop(1, '#f6c14f20');
-      ctx.beginPath();
-      let x = 0;
-      const amp = 24;
-      const freq = 0.008;
-      for (let i = 0; i <= width; i += 6) {
-        const y = height/2 + Math.sin(i * freq + time) * amp 
-                + Math.sin(i * 0.02 + time * 1.7) * 8
-                + Math.sin(i * 0.005 + time * 0.5) * 6;
-        if (i === 0) ctx.moveTo(i, y);
-        else ctx.lineTo(i, y);
+      let time = 0;
+      const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      function drawSoundWave() {
+        if (!ctx) return;
+        ctx.clearRect(0, 0, width, height);
+        const gradient = ctx.createLinearGradient(0, 0, width, 0);
+        gradient.addColorStop(0, '#f6c14f20');
+        gradient.addColorStop(0.5, '#f6c14f60');
+        gradient.addColorStop(1, '#f6c14f20');
+        ctx.beginPath();
+        const amp = 24, freq = 0.008;
+        for (let i = 0; i <= width; i += 6) {
+          const y = height/2 + Math.sin(i * freq + time) * amp
+                  + Math.sin(i * 0.02 + time * 1.7) * 8
+                  + Math.sin(i * 0.005 + time * 0.5) * 6;
+          if (i === 0) ctx.moveTo(i, y); else ctx.lineTo(i, y);
+        }
+        ctx.strokeStyle = gradient;
+        ctx.lineWidth = 2.5;
+        ctx.shadowBlur = 6;
+        ctx.shadowColor = '#f6c14f';
+        ctx.stroke();
+
+        ctx.beginPath();
+        for (let i = 0; i <= width; i += 6) {
+          const y2 = height/2 + Math.cos(i * 0.012 + time * 1.2) * 12 + Math.sin(i * 0.025 + time) * 7;
+          if (i === 0) ctx.moveTo(i, y2); else ctx.lineTo(i, y2);
+        }
+        ctx.strokeStyle = '#f6c14f30';
+        ctx.lineWidth = 1.8;
+        ctx.stroke();
+
+        time += 0.028;
+        if (!reduceMotion) requestAnimationFrame(drawSoundWave);
       }
-      ctx.strokeStyle = gradient;
-      ctx.lineWidth = 2.5;
-      ctx.shadowBlur = 6;
-      ctx.shadowColor = '#f6c14f';
-      ctx.stroke();
-
-      ctx.beginPath();
-      for (let i = 0; i <= width; i += 6) {
-        const y2 = height/2 + Math.cos(i * 0.012 + time * 1.2) * 12 
-                  + Math.sin(i * 0.025 + time) * 7;
-        if (i === 0) ctx.moveTo(i, y2);
-        else ctx.lineTo(i, y2);
-      }
-      ctx.strokeStyle = '#f6c14f30';
-      ctx.lineWidth = 1.8;
-      ctx.stroke();
-      
-      time += 0.028;
-      requestAnimationFrame(drawSoundWave);
+      drawSoundWave();
     }
-    drawSoundWave();
 
-    // Modal de Formatos
+    // === Toast de confirmación ===
+    const toast = document.getElementById('toast');
+    const toastText = document.getElementById('toastText');
+    let toastTimer;
+    function showToast(msg) {
+      toastText.textContent = msg;
+      toast.classList.add('show');
+      clearTimeout(toastTimer);
+      toastTimer = setTimeout(() => toast.classList.remove('show'), 2600);
+    }
+
+    document.querySelectorAll('a[href^="https://wa.me/"]').forEach(link => {
+      link.addEventListener('click', () => {
+        showToast('Abriendo WhatsApp con tu mensaje listo…');
+      });
+    });
+
+    // === Dropdown WhatsApp: clic para abrir/cerrar (funciona en móvil) ===
+    const wpDropdown = document.getElementById('wpDropdown');
+    const wpTrigger = document.getElementById('wpTriggerBtn');
+    if (wpDropdown && wpTrigger) {
+      wpTrigger.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const isOpen = wpDropdown.classList.toggle('open');
+        wpTrigger.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+      });
+      document.addEventListener('click', (e) => {
+        if (!wpDropdown.contains(e.target)) {
+          wpDropdown.classList.remove('open');
+          wpTrigger.setAttribute('aria-expanded', 'false');
+        }
+      });
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+          wpDropdown.classList.remove('open');
+          wpTrigger.setAttribute('aria-expanded', 'false');
+        }
+      });
+    }
+
+    // === Modal de Formatos ===
     const btnFormat = document.getElementById('showFormatBtn');
     if (btnFormat) {
       btnFormat.addEventListener('click', (e) => {
         e.preventDefault();
         const modalDiv = document.createElement('div');
-        modalDiv.style.position = 'fixed';
-        modalDiv.style.top = '0';
-        modalDiv.style.left = '0';
-        modalDiv.style.width = '100%';
-        modalDiv.style.height = '100%';
-        modalDiv.style.backgroundColor = 'rgba(0,0,0,0.85)';
-        modalDiv.style.backdropFilter = 'blur(12px)';
-        modalDiv.style.zIndex = '1000';
-        modalDiv.style.display = 'flex';
-        modalDiv.style.alignItems = 'center';
-        modalDiv.style.justifyContent = 'center';
-        modalDiv.style.fontFamily = "'Inter', sans-serif";
-        
+        Object.assign(modalDiv.style, {
+          position: 'fixed', top: '0', left: '0', width: '100%', height: '100%',
+          backgroundColor: 'rgba(0,0,0,0.85)', backdropFilter: 'blur(12px)',
+          zIndex: '1000', display: 'flex', alignItems: 'center', justifyContent: 'center',
+          fontFamily: "'Inter', sans-serif"
+        });
+
         const modalCard = document.createElement('div');
-        modalCard.style.maxWidth = '380px';
-        modalCard.style.width = '90%';
-        modalCard.style.backgroundColor = '#18181c';
-        modalCard.style.border = '1px solid #f6c14f';
-        modalCard.style.borderRadius = '48px';
-        modalCard.style.padding = '32px 24px';
-        modalCard.style.textAlign = 'center';
-        modalCard.style.boxShadow = '0 40px 80px black';
-        modalCard.style.animation = 'fadeUp 0.2s ease';
-        
+        Object.assign(modalCard.style, {
+          maxWidth: '380px', width: '90%', backgroundColor: '#18181c',
+          border: '1px solid #f6c14f', borderRadius: '48px', padding: '32px 24px',
+          textAlign: 'center', boxShadow: '0 40px 80px black'
+        });
+
         modalCard.innerHTML = `
           <i class="fa-solid fa-guitar" style="font-size: 48px; color: #f6c14f; margin-bottom: 16px; display: inline-block;"></i>
           <h3 style="font-family: 'Playfair Display', serif; font-size: 1.9rem; color:#f6c14f; margin-bottom: 12px;">Formatos CANDIJA</h3>
@@ -692,24 +632,29 @@
             <p>🎺 <strong>Sexteto salsero</strong> — metales, tumba, coros</p>
             <p>🌎 <strong>Big Band 10 músicos</strong> — espectáculo sinfónico latino</p>
             <hr style="border-color:#f6c14f30; margin: 16px 0;">
-            <p><i class="fa-regular fa-calendar-check"></i> <strong>Contacto:</strong> +57 316 571 9057</p>
-            <p><i class="fa-regular fa-envelope"></i> candijaoficial@gmail.com</p>
+            <p><i class="fa-regular fa-calendar-check"></i> <strong>Contacto:</strong>
+              <a href="https://wa.me/573165719057?text=Hola%2C%20quisiera%20informaci%C3%B3n%20sobre%20los%20formatos%20de%20CANDIJA."
+                 target="_blank" rel="noopener" style="color:#f6c14f; text-decoration:underline;">+57 316 571 9057</a>
+            </p>
+            <p><i class="fa-regular fa-envelope"></i>
+              <a href="mailto:candijaoficial@gmail.com" style="color:#f6c14f; text-decoration:underline;">candijaoficial@gmail.com</a>
+            </p>
           </div>
           <button id="closeModalBtn" style="background: #f6c14f; border: none; padding: 12px 24px; border-radius: 40px; font-weight: bold; cursor: pointer; margin-top: 12px; font-size: 1rem;">Cerrar</button>
         `;
-        
+
         modalDiv.appendChild(modalCard);
         document.body.appendChild(modalDiv);
-        
+
         const closeModal = () => modalDiv.remove();
-        document.getElementById('closeModalBtn').addEventListener('click', closeModal);
-        modalDiv.addEventListener('click', (e) => { if(e.target === modalDiv) closeModal(); });
+        modalCard.querySelector('#closeModalBtn').addEventListener('click', closeModal);
+        modalDiv.addEventListener('click', (e) => { if (e.target === modalDiv) closeModal(); });
       });
     }
-    
-    // Parallax ligero
+
+    // Parallax ligero (solo escritorio, respeta reduced-motion)
     const card = document.querySelector('.card');
-    if (card) {
+    if (card && window.matchMedia('(hover: hover)').matches && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
       document.body.addEventListener('mousemove', (e) => {
         const xAxis = (window.innerWidth / 2 - e.pageX) / 70;
         const yAxis = (window.innerHeight / 2 - e.pageY) / 70;
@@ -723,3 +668,4 @@
 </script>
 </body>
 </html>
+
